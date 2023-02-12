@@ -1,5 +1,7 @@
 package com.cursosdedesarrollo.sesion05;
 
+import java.util.Objects;
+
 public class Hija extends Madre{
     private String tlf;
 
@@ -31,5 +33,19 @@ public class Hija extends Madre{
                 this.getNombre() +"', " +
                 "tlf='" + this.tlf +
                 "'}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Hija hija = (Hija) o;
+        return Objects.equals(tlf, hija.tlf);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), tlf);
     }
 }
