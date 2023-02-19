@@ -1,11 +1,12 @@
 package com.cursodedesarrollo.sesion06;
 
 import com.cursosdedesarrollo.sesion06.Persona;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestPersona {
+public class PersonaTest {
 
     @Test
     public void testConstructoraSinParametros(){
