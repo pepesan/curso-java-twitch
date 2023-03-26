@@ -12,12 +12,18 @@ public class App {
     public static void main(String[] args)
             throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         try {
+            // Carga del Driver de la BBDD
             Class.forName (DRIVER_NAME)
                     .newInstance ();
+            // Apertura de la Conexión a BBDD
             Connection connection = DriverManager
                     .getConnection (URL, USERNAME, PASSWORD);
             System.out.println(connection);
+            System.out.println("Aplicación Conectada Correctamente");
+            // Cerrar la conexión
+            connection.close();
         }catch (Exception e){
+            System.out.println("Fallo al conectar");
             System.out.println(e.getMessage());
         }
 
