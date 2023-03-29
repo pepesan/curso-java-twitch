@@ -138,15 +138,15 @@ public class App {
             // Consulta de dato individual
             System.out.println("ReadByID");
             System.out.println(LAST_INSERT_ID);
-            consulta = "SELECT * FROM "+TABLE +" WHERE "+ID+" =  "+LAST_INSERT_ID;
+            //consulta = "SELECT * FROM "+TABLE +" WHERE "+ID+" =  "+LAST_INSERT_ID;
             System.out.println(consulta);
-            // consulta = "UPDATE "+TABLE+" SET "+NAME+ " = ? WHERE "+ID+" = ?";
+            consulta = "SELECT * FROM "+TABLE +" WHERE "+ID+" = ? ";
             // Crear un nuevo Prepared Statement para la consulta
             try {
-                Statement prest2 = connection.prepareStatement(consulta);
-                //prest2.setLong(1, LAST_INSERT_ID);
+                PreparedStatement prest2 = connection.prepareStatement(consulta);
+                prest2.setInt(1,LAST_INSERT_ID);
                 // Ejecución de la consulta
-                rs = prest2.executeQuery(consulta);
+                rs = prest2.executeQuery();
                 rmeta = rs.getMetaData();
                 numColumns=rmeta.getColumnCount();
                 for(int i=1;i<=numColumns;++i) {
@@ -188,14 +188,14 @@ public class App {
                 }
             // leer el dato modificado
             System.out.println("ReadByID");
-            consulta = "SELECT * FROM "+TABLE +" WHERE '"+ID+"' =  "+ LAST_INSERT_ID;
+            //consulta = "SELECT * FROM "+TABLE +" WHERE '"+ID+"' =  "+ LAST_INSERT_ID;
             System.out.println("Sql read: " + consulta);
-            // consulta = "UPDATE "+TABLE+" SET "+NAME+ " = ? WHERE "+ID+" = ?";
+            consulta = "SELECT * FROM "+TABLE +" WHERE '"+ID+"' =  ?";
             // Crear un nuevo Prepared Statement para la consulta
-            Statement prest2 = connection.prepareStatement(consulta);
-            //prest2.setInt(1,);
+            PreparedStatement prest2 = connection.prepareStatement(consulta);
+            prest2.setInt(1,LAST_INSERT_ID);
             // Ejecución de la consulta
-            rs = prest2.executeQuery(consulta);
+            rs = prest2.executeQuery();
             // intentar recoger los metadatos de la tabla
             rmeta = rs.getMetaData();
             numColumns=rmeta.getColumnCount();
