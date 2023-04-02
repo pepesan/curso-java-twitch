@@ -1,4 +1,4 @@
-package com.cursosdedesarrollo.sesion16;
+package com.cursosdedesarrollo.sesion17;
 
 import java.sql.*;
 
@@ -139,7 +139,6 @@ public class App {
             System.out.println(LAST_INSERT_ID);
             consulta = "SELECT * FROM "+TABLE +" WHERE "+ID+" =  "+LAST_INSERT_ID;
             System.out.println(consulta);
-            // consulta = "UPDATE "+TABLE+" SET "+NAME+ " = ? WHERE "+ID+" = ?";
             // Crear un nuevo Prepared Statement para la consulta
             try {
                 Statement prest2 = connection.prepareStatement(consulta);
@@ -187,14 +186,14 @@ public class App {
                 }
             // leer el dato modificado
             System.out.println("ReadByID");
-            //consulta = "SELECT * FROM "+TABLE +" WHERE '"+ID+"' =  "+ LAST_INSERT_ID;
+            consulta = "SELECT * FROM "+TABLE +" WHERE '"+ID+"' =  "+ LAST_INSERT_ID;
             System.out.println("Sql read: " + consulta);
-            consulta = "SELECT * FROM "+TABLE +" WHERE '"+ID+"' =  ?";
+            // consulta = "UPDATE "+TABLE+" SET "+NAME+ " = ? WHERE "+ID+" = ?";
             // Crear un nuevo Prepared Statement para la consulta
-            PreparedStatement prest2 = connection.prepareStatement(consulta);
-            prest2.setInt(1,LAST_INSERT_ID);
+            Statement prest2 = connection.prepareStatement(consulta);
+            //prest2.setInt(1,);
             // Ejecución de la consulta
-            rs = prest2.executeQuery();
+            rs = prest2.executeQuery(consulta);
             // intentar recoger los metadatos de la tabla
             rmeta = rs.getMetaData();
             numColumns=rmeta.getColumnCount();
