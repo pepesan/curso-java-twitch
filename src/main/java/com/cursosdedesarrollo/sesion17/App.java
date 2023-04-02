@@ -1,4 +1,4 @@
-package com.cursosdedesarrollo.sesion16;
+package com.cursosdedesarrollo.sesion17;
 
 import java.sql.*;
 
